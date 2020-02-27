@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,20 +26,26 @@ CONFIG += c++11
 
 SOURCES += \
         contact.cpp \
+        conversation.cpp \
         main.cpp \
         login.cpp \
         sqlconnect.cpp
 
 HEADERS += \
         contact.h \
+        conversation.h \
         login.h \
         sqlconnect.h
 
 FORMS += \
         contact.ui \
+        conversation.ui \
         login.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    img/qq.png

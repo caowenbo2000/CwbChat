@@ -6,17 +6,13 @@
 #ifndef SQLCONNECT_H
 #define SQLCONNECT_H
 
-
 class Sqlconnect
 {
 public:
-    Sqlconnect();
-    ~Sqlconnect();
+//    Sqlconnect();
+//    ~Sqlconnect();
     static void MySqlConnect();
-private:
-    QString str="root";
-    //QSqlDatabase db =QSqlDatabase::addDatabase("QMYSQL");
- 
 };
+
 
 #endif // SQLCONNECT_H

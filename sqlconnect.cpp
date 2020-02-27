@@ -1,15 +1,13 @@
 #include "sqlconnect.h"
 
-Sqlconnect::Sqlconnect()
-{
-    
-}
+//QString strr="root";
 void  Sqlconnect::MySqlConnect()
 {
     QSqlDatabase db =QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("47.93.251.155");
     db.setPort(3306);
     db.setUserName("root");
+    //str
     db.setPassword("root");
     db.setDatabaseName("ChatTest");
     if(!db.open())
