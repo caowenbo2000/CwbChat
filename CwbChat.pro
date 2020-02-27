@@ -35,6 +35,7 @@ HEADERS += \
         contact.h \
         conversation.h \
         login.h \
+        msg_test.h \
         sqlconnect.h
 
 FORMS += \
