@@ -1,13 +1,13 @@
 #include "conversation.h"
 #include "ui_conversation.h"
-#include "msg_test.h"
+#include "msg.h"
 
 Conversation::Conversation(QWidget *parent,QString UserName , int UserId) :
     QWidget(parent),
     ui(new Ui::Conversation)
 {
     //虚拟机:192.168.112.130
-    mytcp->connectToHost("192.168.112.130",8080);//连接服务器
+    mytcp->connectToHost("127.0.0.1",8080);//连接服务器
     this->setWindowFlag(Qt::Window);//子窗口独立显示
     ui->setupUi(this);
     ui->label->setText(UserName);
@@ -16,7 +16,10 @@ Conversation::Conversation(QWidget *parent,QString UserName , int UserId) :
 }
 Conversation::~Conversation()
 {
-    mytcp->close();
+    mytcp->close();//析构tcp
+    delete  mytcp;
+    mytcp=nullptr;
+
     delete ui;
 }
 

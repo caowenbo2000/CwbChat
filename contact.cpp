@@ -10,8 +10,10 @@ Contact::Contact(QWidget *parent) :
     this->setStyleSheet("background-color:#F5A6D9;");
     ui->setupUi(this);
    // this->setWindowFlag(Qt::Desktop);
-    test();
-    //currentTextChanged(const QString &currentText)
+    test();//暂时假装拉取联系人
+
+    mythread->start();
+
     connect(ui->listWidget
             , SIGNAL(currentTextChanged(QString)),
                                this,  SLOT(prin(QString)));
@@ -22,6 +24,7 @@ Contact::Contact(QWidget *parent) :
 
 Contact::~Contact()
 {
+    delete mythread;
     delete ui;
 }
 

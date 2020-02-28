@@ -29,14 +29,16 @@ SOURCES += \
         conversation.cpp \
         main.cpp \
         login.cpp \
-        sqlconnect.cpp
+        sqlconnect.cpp \
+        tcpheartbeat.cpp
 
 HEADERS += \
         contact.h \
         conversation.h \
         login.h \
-        msg_test.h \
-        sqlconnect.h
+        msg.h \
+        sqlconnect.h \
+        tcpheartbeat.h
 
 FORMS += \
         contact.ui \

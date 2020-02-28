@@ -3,7 +3,6 @@
 //QString strr="root";
 Sqlconnect::Sqlconnect()
 {
-    //db.addDatabase("QMYSQL");
     db.setHostName("47.93.251.155");
     db.setPort(3306);
     db.setUserName("root");
@@ -36,8 +35,8 @@ bool Sqlconnect::LoginCheck(int Id, QString PassWord)
     {
         return 0;
     }
-    QSqlQuery *query = new QSqlQuery(db);
-    query->exec("use ChatTest;");
-    query->exec(QString("SELECT * FROM User WHERE Id = '%1' and PassWord = '%2';").arg(Id).arg(PassWord));
-    return query->last();
+    QSqlQuery query = QSqlQuery(db);
+    query.exec("use ChatTest;");
+    query.exec(QString("SELECT * FROM User WHERE Id = '%1' and PassWord = '%2';").arg(Id).arg(PassWord));
+    return query.last();
 }

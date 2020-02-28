@@ -5,6 +5,7 @@
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QDebug>
+#include "tcpheartbeat.h"
 
 namespace Ui {
 class Contact;
@@ -23,6 +24,7 @@ public slots:
     void Switch(QString UserName);
 private:
     Ui::Contact *ui;
+    Tcpheartbeat *mythread = new Tcpheartbeat(this);
 };
 
 #endif // CONTACT_H
