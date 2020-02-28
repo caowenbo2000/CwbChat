@@ -3,15 +3,18 @@
 #include <QSqlError>
 #include <QMessageBox>
 #include <QDebug>
+#include <QSqlQuery>
 #ifndef SQLCONNECT_H
 #define SQLCONNECT_H
 
 class Sqlconnect
 {
 public:
-//    Sqlconnect();
-//    ~Sqlconnect();
-    static void MySqlConnect();
+    Sqlconnect();
+    ~Sqlconnect();
+    bool LoginCheck(int ,QString );//登录查询 api
+private:
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 };
 
 

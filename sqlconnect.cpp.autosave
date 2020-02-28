@@ -3,7 +3,6 @@
 //QString strr="root";
 Sqlconnect::Sqlconnect()
 {
-    //db.addDatabase("QMYSQL");
     db.setHostName("47.93.251.155");
     db.setPort(3306);
     db.setUserName("root");
