@@ -1,30 +1,35 @@
 #include "tcpheartbeat.h"
-#include <QDebug>
-#include <QString>
-//#include <windows.h>
-Tcpheartbeat :: Tcpheartbeat(QObject *par) :QThread (par)
+#include <windows.h>
+#include<QThread>
+
+TcpHeartBeat::TcpHeartBeat(QObject *parent) : QObject(parent)
 {
 
 }
 
-void Tcpheartbeat::run()
-{
-//    qDebug()<<"Fuck You";
-//    //192.168.112.130 虚拟机
-//    mytcp.connectToHost("127.0.0.1",8081);//连接服务器
 
-//    //QString str = "Heartbeat";
-//    char str = 'a';
-//    mytcp.write(&str,1);
-//    mytcp.write(&str,1);
-//    mytcp.write(&str,1);
-    int a = 1 ;
-    qDebug() <<a ;
+void TcpHeartBeat::HeartBeatRun()
+{
+    qDebug() <<QThread::currentThreadId();
+    QTcpSocket * HeartBeatSocket;
+    HeartBeatSocket = new QTcpSocket ;
+    //192.168.112.130 虚拟机
+    HeartBeatSocket->connectToHost("192.168.112.130",8080);//连接服务器
+    if(HeartBeatSocket -> waitForConnected()==0)
+    {
+        qDebug() <<"Sorry that you cant connect to server";
+        qDebug() << HeartBeatSocket->errorString();
+        return ;
+    }
+    qDebug() << "Start to HeartBeat ";
+    QString str = "Heartbeat";
+    int TempTime=0;
     while(1)
     {
-        //mytcp->write(&str,1);
-        //qDebug()<<"Fuck You";
-        qDebug() << "fuck you" ;
-        sleep(1);
+       HeartBeatSocket->write(str.toUtf8().data());
+        HeartBeatSocket->flush();
+        //qDebug()<<TempTime;
+        TempTime++;
+        QThread::sleep(1);
     }
 }

@@ -1,16 +1,18 @@
 #ifndef TCPHEARTBEAT_H
 #define TCPHEARTBEAT_H
 
-#include <QThread>
+#include <QObject>
 #include <QTcpSocket>
 
-class Tcpheartbeat : public QThread
+class TcpHeartBeat : public QObject
 {
+    Q_OBJECT
 public:
-    Tcpheartbeat(QObject *parent = nullptr);
-    void run();
-private:
+    explicit TcpHeartBeat(QObject *parent = nullptr);
+signals:
 
+public slots:
+    void HeartBeatRun();
 };
 
 #endif // TCPHEARTBEAT_H

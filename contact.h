@@ -5,6 +5,7 @@
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QDebug>
+#include <QThread>
 #include "tcpheartbeat.h"
 
 namespace Ui {
@@ -19,12 +20,17 @@ public:
     explicit Contact(QWidget *parent = nullptr);
     ~Contact();
     void test();
+
+signals:
+  void startRunning(); // 用于触发新线程中的耗时操作函数
+
 public slots:
     void prin(QString CurrentSelectText);
     void Switch(QString UserName);
 private:
     Ui::Contact *ui;
-    Tcpheartbeat *mythread = new Tcpheartbeat(this);
+    TcpHeartBeat *mythread;
+    QThread *Thread;
 };
 
 #endif // CONTACT_H

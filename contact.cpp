@@ -11,15 +11,20 @@ Contact::Contact(QWidget *parent) :
     ui->setupUi(this);
    // this->setWindowFlag(Qt::Desktop);
     test();//暂时假装拉取联系人
-
-    mythread->start();
-
+    qDebug() <<QThread::currentThreadId();
+    mythread = new TcpHeartBeat();
+    Thread = new QThread(this);
+    mythread->moveToThread(Thread);
+    Thread->start();
+    //mythread->HeartBeatRun();
+    connect(this,SIGNAL(startRunning()), mythread , SLOT(HeartBeatRun()) );
     connect(ui->listWidget
             , SIGNAL(currentTextChanged(QString)),
                                this,  SLOT(prin(QString)));
     connect(ui->listWidget
             , SIGNAL(currentTextChanged(QString)),
                                this,  SLOT(Switch(QString)));
+    emit startRunning();
 }
 
 Contact::~Contact()
