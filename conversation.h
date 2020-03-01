@@ -18,6 +18,7 @@ class Conversation : public QWidget
 public:
      Conversation(QWidget *parent = nullptr,QString UserName = "",int UserId = 0 );
     ~Conversation();
+     void SetConversation(int);
 
 private slots:
      void CReadText();

@@ -14,7 +14,7 @@ public:
     ~Sqlconnect();
     bool LoginCheck(int ,QString );//登录查询 api
 private:
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+
 };
 
 

@@ -1,6 +1,9 @@
 #include "conversation.h"
 #include "ui_conversation.h"
 #include "msg.h"
+#include "sqliteconnect.h"
+#include <QSqlRecord>
+#include <QSqlQuery>
 
 Conversation::Conversation(QWidget *parent,QString UserName , int UserId) :
     QWidget(parent),
@@ -13,6 +16,8 @@ Conversation::Conversation(QWidget *parent,QString UserName , int UserId) :
     ui->label->setText(UserName);
     ui->textEdit_read->setReadOnly(1);
     connect(mytcp, &QIODevice::readyRead, this, &Conversation::CReadText);
+    this->SetConversation(UserId);
+
 }
 Conversation::~Conversation()
 {
@@ -46,4 +51,15 @@ void Conversation::CReadText()
     char CReceiveData[200];
     mytcp->read(CReceiveData,200);
     ui->textEdit_read->append(CReceiveData);
+}
+
+void Conversation::SetConversation(int Id)
+{
+    QSqlQuery CurrentQuery = SqliteConnect::GetRecord(Id) ;
+    while(CurrentQuery.next())
+    {
+        QString val = CurrentQuery.value(3).toString();
+        ui->textEdit_read->append(val);
+        //qDebug() <<val ;
+    }
 }

@@ -10,7 +10,8 @@ TcpHeartBeat::TcpHeartBeat(QObject *parent) : QObject(parent)
 
 void TcpHeartBeat::HeartBeatRun()
 {
-    qDebug() <<QThread::currentThreadId();
+    qDebug() << "Start to HeartBeat 1";
+    //qDebug() <<QThread::currentThreadId();
     QTcpSocket * HeartBeatSocket;
     HeartBeatSocket = new QTcpSocket ;
     //192.168.112.130 虚拟机

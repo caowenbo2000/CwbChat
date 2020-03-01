@@ -22,8 +22,11 @@ void Login::on_button_log_released()
     int TempId = ui->lineEdit_id->text().toInt();
     std::string cTempPassWord = ui->lineEdit_password->text().toStdString();
     QString TempPassWord = QString::fromStdString(cTempPassWord);   
-    if(yourdb.LoginCheck(TempId,TempPassWord)==1)
+    if(yourdb.LoginCheck(TempId,TempPassWord)==1) // 成功登录
     {
+
+
+
         qDebug()<<"login success";
         Contact *w2= new Contact();
         w2->show();

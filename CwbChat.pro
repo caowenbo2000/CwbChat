@@ -30,6 +30,7 @@ SOURCES += \
         main.cpp \
         login.cpp \
         sqlconnect.cpp \
+        sqliteconnect.cpp \
         tcpheartbeat.cpp
 
 HEADERS += \
@@ -38,6 +39,7 @@ HEADERS += \
         login.h \
         msg.h \
         sqlconnect.h \
+        sqliteconnect.h \
         tcpheartbeat.h
 
 FORMS += \

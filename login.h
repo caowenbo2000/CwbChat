@@ -8,7 +8,7 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include "sqlconnect.h"
-
+#include "sqliteconnect.h"
 namespace Ui {
 class Login;
 }
@@ -27,6 +27,7 @@ private slots:
 private:
     Ui::Login *ui;
     Sqlconnect yourdb;
+    SqliteConnect ConversationDB ;
 };
 
 #endif // LOGIN_H
