@@ -4,7 +4,7 @@
 #include <QStandardPaths>
 #include <QDir>
 #include <QSqlRecord>
-
+#include <QDateTime>
 
 SqliteConnect::SqliteConnect() // 连接数据库
 {
@@ -63,9 +63,15 @@ void SqliteConnect:: CreateConversation()
 }
 
 
-void SqliteConnect:: InsertRecord(QString s)
+void SqliteConnect:: InsertRecord(MsgFormat InsRecord)
 {
     QSqlQuery query;
+    QString QueryStr = QString("INSERT INTO Conversations VALUES('%1','%2','%3','%4')")
+            .arg(InsRecord.SenderID)
+            .arg(InsRecord.RecverID)
+            .arg(InsRecord.MsgTime)
+            .arg(InsRecord.MsgContent);
+    query.exec(QueryStr);
 
 }
 
@@ -77,6 +83,8 @@ QSqlQuery SqliteConnect :: GetRecord(int Id)
     //qDebug() << QString("SELECT * FROM Conversation WHERE recipient = '%1' OR author = '%1'").arg(Id);
     return query ;
 }
+
+
 
 
 

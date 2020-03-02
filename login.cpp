@@ -24,9 +24,6 @@ void Login::on_button_log_released()
     QString TempPassWord = QString::fromStdString(cTempPassWord);   
     if(yourdb.LoginCheck(TempId,TempPassWord)==1) // 成功登录
     {
-
-
-
         qDebug()<<"login success";
         Contact *w2= new Contact();
         w2->show();

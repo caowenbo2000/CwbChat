@@ -15,7 +15,7 @@ void TcpHeartBeat::HeartBeatRun()
     QTcpSocket * HeartBeatSocket;
     HeartBeatSocket = new QTcpSocket ;
     //192.168.112.130 虚拟机
-    HeartBeatSocket->connectToHost("192.168.112.130",8080);//连接服务器
+    HeartBeatSocket->connectToHost("127.0.0.1",8081);//连接服务器
     if(HeartBeatSocket -> waitForConnected()==0)
     {
         qDebug() <<"Sorry that you cant connect to server";
